@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="card">
+	<!-- insert, delete, update의 결과 타입은 무조건 resultType=”int” 이므로 
+	프로그래머가 써주지 않아도 이미 resultType=”int”가 있는 것으로 봄. -->
+	<insert id="create" parameterType="cardVO">
+		insert into card values (#{card_id}, #{card_name}, #{card_date}, #{card_type}, #{card_birth}, #{card_mmti}, #{card_img}, #{card_date})
+	</insert>
+	
+	<delete id="del" parameterType="Integer">
+		delete from card where card_id = #{card_id}
+	</delete>
+	
+	<update id="up"  parameterType="cardVO">
+		update card set card_img = #{card_img} where card_id = #{card_id}
+	</update>
+	
+	<select id="one" parameterType="String" resultType="cardVO">
+		select * from card where card_title = #{card_title}
+	</select>
+	
+	<select id="all" parameterType="cardVO" resultType="cardVO">
+		select * from card limit 5;
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
